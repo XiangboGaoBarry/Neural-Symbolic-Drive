@@ -1,0 +1,9 @@
+accelerate>=0.34
+huggingface-hub>=0.24
+numpy>=1.24
+pillow>=10.0
+protobuf>=4.25
+sentencepiece>=0.2
+tqdm>=4.66
+torch>=2.3
+

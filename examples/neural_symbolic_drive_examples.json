@@ -1,0 +1,56 @@
+[
+  {
+    "id": "example_01_traffic_light_lead",
+    "images": [
+      "example_01/front.jpg",
+      "example_01/front_right.jpg",
+      "example_01/front_left.jpg"
+    ],
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are an autonomous driving agent. You have access to multi-view camera images of a vehicle: (1) front view (which you should focus on with the most attention) <image>, (2) front right view <image>, and (3) front left view <image>. Your task is to do your best to predict future waypoints for the vehicle over the next 10 timesteps (5 seconds at 0.5-second intervals), given the vehicle's intent inferred from the images. Provided are the previous ego vehicle status. Positive x means forward direction while positive y means leftwards. The data is presented in the format [x, y]:(t-2.0s) [-10.58, 2.60], Acceleration: X 0.61, Y 1.36 m/s^2, Velocity: X 5.48, Y 0.08 m/s, (t-1.5s) [-8.16, 1.50], Acceleration: X 0.23, Y 1.27 m/s^2, Velocity: X 5.55, Y 0.07 m/s, (t-1.0s) [-5.58, 0.70], Acceleration: X 0.27, Y 2.06 m/s^2, Velocity: X 5.63, Y 0.07 m/s, (t-0.5s) [-2.87, 0.19], Acceleration: X 0.64, Y 1.08 m/s^2, Velocity: X 5.83, Y 0.04 m/s, (t-0.0s) [0.0, 0.0], Acceleration: X 0.50, Y 1.05 m/s^2, Velocity: X 6.01, Y 0.10 m/s"
+      },
+      {
+        "role": "assistant",
+        "content": "<REASONING>\n[Scene Classification] This is a high magnitude jerk scenario. Using the Intelligent Driver Model (IDM) planner, which uses car-following dynamics to maintain safe headway and smooth longitudinal control for trajectory planning guidance.\n\n[Route] Following planned lane sequence toward destination (~-180.9m forward, -358.5m left). 9 lane segments, route found. Target speed: 10.0 m/s.\n[Scene] 16 objects within detection range. Current speed: 6.0 m/s.\n[Nearby Objects] Vehicle 6.3m ahead-left (stationary, 6.0×2.2m), Vehicle 10.8m ahead-right (stationary, 4.8×2.0m), Vehicle 13.1m ahead-right (stationary, 4.7×1.9m), Czone sign 16.4m ahead-left (stationary), Pedestrian 16.5m behind-left (stationary), Vehicle 16.8m ahead-left (2.3 m/s, 4.4×1.8m), Vehicle 18.7m behind-left (stationary, 5.4×2.0m), Vehicle 20.4m ahead-right (stationary, 4.6×1.8m).\n[t=0.5-5.0s, 10 steps] Free road ahead. Accelerate +0.59 m/s^2 avg. Speed: 6.0 → 8.9 m/s.\n[Summary] Free road driving. Accelerated from 6.0 to 8.9 m/s.\n</REASONING>\n<PLANNING>Predicted future movement details for the next 5 seconds (sampled at 0.5-second intervals), including BEV location in x and y directions (in meters). Positive x means forward direction while positive y means leftwards. The output is formatted as [x, y]: [2.90, 0.73], [6.06, 1.29], [9.44, 1.83], [13.02, 2.32], [16.76, 2.84], [20.66, 3.38], [24.70, 3.95], [28.87, 4.43], [33.16, 4.91], [37.52, 5.42]</PLANNING>"
+      }
+    ]
+  },
+  {
+    "id": "example_02_controlled_following",
+    "images": [
+      "example_02/front.jpg",
+      "example_02/front_right.jpg",
+      "example_02/front_left.jpg"
+    ],
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are an autonomous driving agent. You have access to multi-view camera images of a vehicle: (1) front view (which you should focus on with the most attention) <image>, (2) front right view <image>, and (3) front left view <image>. Your task is to do your best to predict future waypoints for the vehicle over the next 10 timesteps (5 seconds at 0.5-second intervals), given the vehicle's intent inferred from the images. Provided are the previous ego vehicle status. Positive x means forward direction while positive y means leftwards. The data is presented in the format [x, y]:(t-2.0s) [-12.97, -0.32], Acceleration: X 0.37, Y -0.02 m/s^2, Velocity: X 6.35, Y 0.17 m/s, (t-1.5s) [-9.86, -0.23], Acceleration: X 0.21, Y 0.14 m/s^2, Velocity: X 6.51, Y 0.18 m/s, (t-1.0s) [-6.66, -0.13], Acceleration: X 0.28, Y -0.03 m/s^2, Velocity: X 6.67, Y 0.19 m/s, (t-0.5s) [-3.38, -0.05], Acceleration: X 0.36, Y -0.05 m/s^2, Velocity: X 6.85, Y 0.19 m/s, (t-0.0s) [0.0, 0.0], Acceleration: X 0.25, Y -0.66 m/s^2, Velocity: X 7.05, Y 0.21 m/s"
+      },
+      {
+        "role": "assistant",
+        "content": "<REASONING>\n[Scene Classification] This is a lane change scenario. Using the IDM (Intelligent Driver Model) planner, which uses car-following dynamics to maintain safe headway and smooth longitudinal control for trajectory planning guidance.\n\n[Route] Following planned lane sequence toward destination (~-263.1m forward, -331.3m left). 7 lane segments, route found. Target speed: 10.0 m/s.\n[Scene] 17 objects within detection range. Current speed: 7.0 m/s.\n[Nearby Objects] Vehicle 4.0m behind-right (stationary, 10.2×3.0m), Vehicle 6.7m beside-right (stationary, 4.6×1.9m), Vehicle 8.6m ahead-right (stationary, 4.7×1.9m), Pedestrian 10.4m behind-left (stationary), Vehicle 11.6m behind-right (stationary, 4.7×1.8m), Vehicle 13.1m ahead-right (stationary, 6.1×2.4m), Vehicle 15.2m behind-left (stationary, 3.8×1.8m), Vehicle 16.7m behind-right (stationary, 4.7×2.0m).\n[t=0.5-5.0s, 10 steps] Free road ahead. Accelerate +0.41 m/s^2 avg. Speed: 7.0 → 9.1 m/s.\n[Summary] Free road driving. Accelerated from 7.0 to 9.1 m/s.\n</REASONING>\n<PLANNING>Predicted future movement details for the next 5 seconds (sampled at 0.5-second intervals), including BEV location in x and y directions (in meters). Positive x means forward direction while positive y means leftwards. The output is formatted as [x, y]: [3.53, 0.14], [7.23, 0.04], [11.09, -0.03], [15.10, -0.09], [19.23, -0.11], [23.47, -0.11], [27.80, -0.07], [32.21, 0.01], [36.68, 0.10], [41.19, 0.19]</PLANNING>"
+      }
+    ]
+  },
+  {
+    "id": "example_03_traffic_light_lead_reference",
+    "images": [
+      "example_03/front.jpg",
+      "example_03/front_right.jpg",
+      "example_03/front_left.jpg"
+    ],
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are an autonomous driving agent. You have access to multi-view camera images of a vehicle: (1) front view (which you should focus on with the most attention) <image>, (2) front right view <image>, and (3) front left view <image>. Your task is to do your best to predict future waypoints for the vehicle over the next 10 timesteps (5 seconds at 0.5-second intervals), given the vehicle's intent inferred from the images. Provided are the previous ego vehicle status. Positive x means forward direction while positive y means leftwards. The data is presented in the format [x, y]:(t-2.0s) [-10.04, 0.02], Acceleration: X 2.24, Y 0.04 m/s^2, Velocity: X 2.62, Y 0.07 m/s, (t-1.5s) [-8.41, 0.02], Acceleration: X 2.37, Y 0.11 m/s^2, Velocity: X 3.88, Y 0.12 m/s, (t-1.0s) [-6.17, 0.01], Acceleration: X 2.31, Y 0.01 m/s^2, Velocity: X 5.11, Y 0.13 m/s, (t-0.5s) [-3.36, 0.01], Acceleration: X 2.08, Y -0.00 m/s^2, Velocity: X 6.30, Y 0.16 m/s, (t-0.0s) [0.0, 0.0], Acceleration: X 2.06, Y -0.25 m/s^2, Velocity: X 7.42, Y 0.15 m/s"
+      },
+      {
+        "role": "assistant",
+        "content": "<REASONING>\n[Scene Classification] This is a accelerating at traffic light with lead scenario. Using the Intelligent Driver Model (IDM) planner, which uses car-following dynamics to maintain safe headway and smooth longitudinal control for trajectory planning guidance.\n\n[Route] Following planned lane sequence toward destination (~763.8m forward, -100.8m left). 23 lane segments, route found. Target speed: 10.0 m/s.\n[Scene] 26 objects within detection range. Current speed: 7.4 m/s.\n[Nearby Objects] Vehicle 4.1m ahead-right (5.7 m/s, 4.9×2.0m), Vehicle 10.8m behind-right (3.0 m/s, 4.8×1.9m), Vehicle 13.9m ahead (8.5 m/s, 4.5×2.0m), Pedestrian 14.6m behind-right (1.6 m/s), Vehicle 15.2m behind-right (stationary, 5.4×2.1m), Pedestrian 15.3m behind-right (1.6 m/s), Vehicle 16.7m behind-left (stationary, 6.0×2.2m), Vehicle 16.8m behind (3.9 m/s, 4.5×1.9m).\n[t=0.5s] Vehicle at 8.9m (8.5 m/s). Gap tight (8.9m vs 9.9m needed). Decelerate -0.52 m/s^2. Speed: 7.4 → 7.2 m/s.\n[t=1.0s] Vehicle at 5.2m (8.5 m/s). Gap tight (5.2m vs 9.0m needed). Decelerate -2.25 m/s^2. Speed: 7.2 → 6.0 m/s.\n[t=1.5-2.0s, 2 steps] Vehicle at 1.6-0.0m (8.5 m/s). Gap tight (1.3m vs 4.2m needed). Decelerate -3.00 m/s^2 avg. Speed: 6.0 → 3.0 m/s.\n[t=2.5-4.0s, 4 steps] Vehicle at 0.0-0.0m (8.4 m/s). Gap adequate (1.0m vs 0.9m needed). Maintain speed (+0.10 m/s^2) avg. Speed: 3.0 → 3.2 m/s.\n[t=4.5-5.0s, 2 steps] Free road ahead. Accelerate +0.98 m/s^2 avg. Speed: 3.2 → 4.2 m/s.\n[Summary] Following lead vehicle. Decelerated from 7.4 to 4.2 m/s.\n</REASONING>\n<PLANNING>Predicted future movement details for the next 5 seconds (sampled at 0.5-second intervals), including BEV location in x and y directions (in meters). Positive x means forward direction while positive y means leftwards. The output is formatted as [x, y]: [3.71, -0.26], [7.29, -0.23], [10.31, -0.18], [12.57, -0.13], [14.09, -0.08], [15.69, -0.03], [17.31, 0.04], [18.92, 0.11], [20.54, 0.19], [22.40, 0.26]</PLANNING>"
+      }
+    ]
+  }
+]
