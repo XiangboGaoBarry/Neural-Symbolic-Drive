@@ -22,22 +22,6 @@ The model checkpoint is hosted separately on Hugging Face:
 xiangbog/Neural-Symbolic-Drive
 ```
 
-## Contents
-
-```text
-neural_symbolic_drive/
-  infer.py              # Qwen3.5 multimodal batch inference
-  metrics.py            # ADE/FDE/AHE/FHE/MR evaluation for <PLANNING> outputs
-examples/
-  neural_symbolic_drive_examples.json
-  example_01/           # front, front-right, front-left images
-  example_02/
-  example_03/
-scripts/
-  run_example.sh        # one-command example inference
-requirements.txt
-```
-
 ## Installation
 
 Create a fresh environment:
@@ -45,14 +29,6 @@ Create a fresh environment:
 ```bash
 conda create -n nsdrive python=3.10 -y
 conda activate nsdrive
-```
-
-If conda is unavailable:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
 ```
 
 Install PyTorch for your CUDA version, then install the remaining dependencies:
@@ -109,17 +85,3 @@ python -m neural_symbolic_drive.metrics \
   --comparison_json results/comparison.json
 ```
 
-Metrics:
-
-- `ADE`: average displacement error in meters.
-- `FDE`: final displacement error in meters.
-- `AHE`: average heading error in degrees.
-- `FHE`: final heading error in degrees.
-- `MR`: miss rate, where `FDE > 2m`.
-
-## Notes
-
-- The GitHub repository contains code and examples only.
-- The Hugging Face repository contains the public Qwen3.5 checkpoint.
-- The example set includes real front, front-right, and front-left camera images with trajectory labels.
-- Please verify the final release license against the upstream base model license before broad redistribution.
