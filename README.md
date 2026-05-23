@@ -22,8 +22,6 @@ The model checkpoint is hosted separately on Hugging Face:
 xiangbog/Neural-Symbolic-Drive
 ```
 
-The code defaults to that checkpoint, so users do not need to manually download weights before running the example.
-
 ## Contents
 
 ```text
