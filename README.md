@@ -119,14 +119,6 @@ Metrics:
 - `FHE`: final heading error in degrees.
 - `MR`: miss rate, where `FDE > 2m`.
 
-## Evaluation Snapshot
-
-The released 3-camera Qwen3.5 checkpoint was evaluated on the internal V2 reasoning test set:
-
-| Model | Valid / Total | ADE@3s | FDE@3s | MR@3s |
-| --- | ---: | ---: | ---: | ---: |
-| Neural-Symbolic Drive Qwen3.5 3cam | 488 / 500 | 1.0982 | 1.9226 | 26.23% |
-
 ## Notes
 
 - The GitHub repository contains code and examples only.
